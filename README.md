@@ -10,6 +10,7 @@ your assistant, your browser, your notes — everything runs on your machine,
 and nothing you do leaves it.
 
 [![website](https://img.shields.io/badge/website-fink.fyi-0a0a0a?labelColor=1a1a1e)](https://fink.fyi)
+[![downloads](https://img.shields.io/endpoint?url=https%3A%2F%2Ffink.fyi%2Fapi%2Fdownloads%3Fformat%3Dshields)](https://fink.fyi/download)
 
 </div>
 
@@ -35,16 +36,20 @@ grab the installer for your product from
 
 | platform | file | notes |
 |---|---|---|
-| windows | `fink-setup-<version>.exe` / `fink-browser-setup-…` / `fink-notes-setup-…` | one-click install, updates itself silently |
+| windows | `fink-setup-<version>.exe` / `fink-browser-setup-…` / `fink-notes-setup-…` | one-click install; asks before it updates |
 | macos | `…-mac.dmg` | right-click → open the first time |
 | linux | `…-linux.AppImage` | `chmod +x`, then run |
+
+the downloads badge above also counts the closed beta, which was handed out
+before these releases existed — so it is higher than the per-file counts on
+the [releases page](https://github.com/finkdot/fink/releases).
 
 ## verify your download
 
 every release lists **sha256** checksums. compare before you run:
 
 ```powershell
-Get-FileHash .\fink-setup-0.1.0.exe -Algorithm SHA256
+Get-FileHash .\fink-setup-<version>.exe -Algorithm SHA256
 ```
 
 updates inside the app are verified twice on their own: the update manifest
