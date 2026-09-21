@@ -70,8 +70,14 @@ pinned sha256 before it ever runs. the same public key is published here as
 - **your notes** — encrypted on disk. we could not read them if we wanted to.
 - **your history, downloads & bookmarks** — encrypted with keys bound to
   your os user.
-- **what you browse** — no account, no sync, no telemetry. the only thing
-  the app ever asks our server is whether there is an update.
+- **what you browse** — the sites you open and the searches you run go to
+  those sites and that search engine. that is the web, and no browser can
+  promise otherwise. what fink promises is everything around it: no
+  account, no sync, no telemetry to us. address-bar completions go only to
+  the engine you picked, and nowhere at all while onion routing is on.
+  trackers and fingerprinting are blocked. onion routing hides your address
+  from the sites themselves. incognito leaves nothing behind. the only
+  thing the app ever asks our server is whether there is an update.
 
 ## the code
 
