@@ -59,14 +59,19 @@ pinned sha256 before it ever runs. the same public key is published here as
 [`fink_public.key`](fink_public.key), and the standing
 [warrant canary](https://fink.fyi/canary) is signed with it too.
 
-## what leaves your machine
+## what *doesn't* leave your machine
 
 - **his thinking** — a local model via ollama. never a cloud api.
-- **your voice** — wake word, dictation and speech run locally by default.
-  the one online voice option asks first, and tells you exactly what it
-  sends.
+- **his memory** — what you tell him to remember is encrypted on disk, bound
+  to your os user. it is never sent anywhere to be "improved".
+- **your voice** — wake word, dictation and speech run locally. the one
+  online voice option is off until you turn it on, asks first, and tells
+  you exactly what it would send.
 - **your notes** — encrypted on disk. we could not read them if we wanted to.
-- **your history & downloads** — encrypted with keys bound to your os user.
+- **your history, downloads & bookmarks** — encrypted with keys bound to
+  your os user.
+- **what you browse** — no account, no sync, no telemetry. the only thing
+  the app ever asks our server is whether there is an update.
 
 ## the code
 
@@ -262,8 +267,8 @@ alone is not enough: the installer would also have to be hosted where our
 releases live.
 
 ```js
-// A stolen signing key is then no longer enough on its own: the attacker also
-// has to host the installer where our releases live.
+// A stolen signing key alone is not enough: the attacker would also have to
+// host the installer where our releases live.
 const RELEASE_PREFIXES = [
   `${downloadsBase.replace(/\/$/, '')}/`,
   `https://github.com/${ghRepo}/releases/download/`,
@@ -281,7 +286,7 @@ only from the app archive, and the archive's integrity checked at launch.
 ```js
 // Electron fuses, flipped in the packaged binary at pack time.
 //  - cookies are encrypted with the profile's OS-keystore key, so a backup
-//    or copied profile no longer holds replayable session cookies;
+//    or copied profile holds no replayable session cookies;
 //  - NODE_OPTIONS and --inspect can't turn the shipped exe into a Node
 //    debugger/loader;
 //  - only resources/app.asar is loaded, and its header is checked against
